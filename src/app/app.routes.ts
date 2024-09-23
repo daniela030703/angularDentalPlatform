@@ -12,6 +12,7 @@ import { MedicosComponent } from './modules/admin/medicos/medicos.component';
 import { PacientesComponent } from './modules/admin/pacientes/pacientes.component';
 import { AdminComponent } from './modules/admin/admin.component';
 import { AddServiceComponent } from './modules/admin/services/add-service/add-service.component';
+import { AddMedicoComponent } from './modules/admin/medicos/add-medico/add-medico.component';
 
 export const routes: Routes = [
     { path: '', component: WebPageComponent,
@@ -36,6 +37,7 @@ export const routes: Routes = [
             { path: 'services', component: ServicesComponent },
             { path: 'add-service', component: AddServiceComponent },
             { path: 'medicos', component: MedicosComponent },
+            { path: 'add-medico', component: AddMedicoComponent},
             { path: 'pacientes', component: PacientesComponent },
         ]
     }

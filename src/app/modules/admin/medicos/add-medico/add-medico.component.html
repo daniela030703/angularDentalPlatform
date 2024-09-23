@@ -1,0 +1,59 @@
+<div class="flex flex-col flex-auto min-w-0 bg-indigo-100 p-8">
+    <div class="flex-auto border-t -mt-px pt-4 sm:pt-6">
+        <div class="w-full max-w-screen-xl mx-auto">
+            <h2 class="text-2xl font-bold text-indigo-600 mb-4">Agregar Usuario</h2>
+            <form class="flex flex-col bg-white mt-8 p-8 pb-5 rounded shadow overflow-hidden" [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Tipo de Documento</mat-label>
+                        <mat-select formControlName="tipoDocumento">
+                            <mat-option value="dni">DNI</mat-option>
+                            <mat-option value="pasaporte">Pasaporte</mat-option>
+                            <mat-option value="cedula">Cédula</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Número de Documento</mat-label>
+                        <input matInput placeholder="Ej. 12345678" formControlName="numeroDocumento" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+                </div>
+
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Nombre</mat-label>
+                        <input matInput placeholder="Ej. Juan" formControlName="nombre" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Apellidos</mat-label>
+                        <input matInput placeholder="Ej. Pérez" formControlName="apellidos" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+                </div>
+
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Correo Electrónico</mat-label>
+                        <input matInput placeholder="ejemplo@correo.com" type="email" formControlName="correo" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Teléfono</mat-label>
+                        <input matInput placeholder="Ej. 123456789" type="tel" formControlName="telefono" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+                </div>
+
+                <div class="flex flex-col mb-4">
+                    <mat-form-field class="flex-auto">
+                        <mat-label class="text-gray-700">Fecha de Nacimiento</mat-label>
+                        <input matInput type="date" formControlName="fechaNacimiento" class="block flex-1 border border-gray-300 rounded-md bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent sm:text-sm sm:leading-6" />
+                    </mat-form-field>
+                </div>
+
+                <button type="submit" class="w-full p-6 mt-4 bg-blue-500 text-white font-semibold py-2 rounded-full hover:bg-blue-600">
+                    Agregar Usuario
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

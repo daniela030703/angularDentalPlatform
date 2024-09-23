@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { DataTableComponent } from '../data-table/data-table.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-medicos',
   standalone: true,
-  imports: [DataTableComponent],
+  imports: [DataTableComponent, RouterModule],
   templateUrl: './medicos.component.html',
   styleUrl: './medicos.component.css'
 })
