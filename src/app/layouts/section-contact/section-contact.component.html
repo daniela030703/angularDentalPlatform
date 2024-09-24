@@ -1,14 +1,20 @@
-<div class="flex flex-row bg-sky-900 items-center justify-between px-8 py-12">
+<div class="relative flex flex-row bg-sky-900 items-center justify-between px-8  overflow-hidden">
+    <!-- Círculos de fondo -->
+    <div class="absolute inset-0">
+        <div class="absolute bg-indigo-500 rounded-full opacity-30 h-48 w-48 top-10 left-10"></div>
+        <div class="absolute bg-indigo-500 rounded-full opacity-30 h-64 w-64 bottom-10 right-20"></div>
+        <div class="absolute bg-indigo-500 rounded-full opacity-30 h-32 w-32 top-20 right-10"></div>
+    </div>
+    
     <!-- Contenedor del texto y botón -->
-    <div class="flex flex-col max-w-lg">
-        <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight text-white">
+    <div class="flex flex-col max-w-lg ml-20 z-10">
+        <div class="mt-8 text-4xl text-center font-extrabold tracking-tight leading-tight text-indigo-200">
             Transformamos sonrisas, mejoramos vidas. <br> ¡Agenda tu cita hoy!
         </div>
-        <button class="w-full mt-6 bg-white text-indigo-500 py-2 px-4 rounded-lg hover:bg-gray-100 transition">
+        <button class="w-full h-12 mt-6 bg-indigo-500 text-white text-2xl font-bold py-2 px-4 rounded-lg hover:bg-gray-100 hover:text-indigo-500 transition">
             Agendar
         </button>
     </div>
-    <div>
-        <img src="assets/img/mujer.png" alt="Mujer Sonriente">
-    </div>
+    
+    <img class="z-10" src="https://cdn.pixabay.com/photo/2020/01/31/16/35/brushing-4808503_1280.png" width="600" height="300">
 </div>
