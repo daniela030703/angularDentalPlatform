@@ -1,16 +1,16 @@
 <div class="flex flex-col flex-auto items-center sm:justify-center min-w-0">
-    <div class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card">
+    <div class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card bg-indigo-100">
         <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
             <!-- Logo -->
             <div class="w-12">
-                <img src="assets/images/logo/logo.svg">
+                <img class="h-8 w-auto"  src="https://cdn.pixabay.com/photo/2014/10/06/04/29/smile-476038_1280.png" alt="Your Company">
             </div>
 
             <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign in</div>
+            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Iniciar  Sesión</div>
             <div class="flex items-baseline mt-0.5 font-medium">
-                <div>Don't have an account?</div>
-                <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-up']">Sign up</a>
+                <div>¿No tienes una cuenta?</div>
+                <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-up']">Registrarse</a>
             </div>
 
             <!-- Sign in form -->
@@ -18,19 +18,19 @@
 
                 <!-- Email field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Email address</mat-label>
+                    <mat-label>Correo electrónico</mat-label>
                     <input id="email" matInput [formControlName]="'email'">
                     <mat-error *ngIf="signInForm.get('email').hasError('required')">
-                        Email address is required
+                        Correo requerido
                     </mat-error>
                     <mat-error *ngIf="signInForm.get('email').hasError('email')">
-                        Please enter a valid email address
+                        Por favor, introduce una dirección de correo electrónico válida
                     </mat-error>
                 </mat-form-field>
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
+                    <mat-label>Contraseña</mat-label>
                     <input id="password" matInput type="password" formControlName="password" #passwordField>
                     <button mat-icon-button type="button" (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'" matSuffix>
                         <mat-icon *ngIf="passwordField.type === 'password'">visibility</mat-icon>
@@ -45,7 +45,7 @@
 
                 <!-- Submit button -->
                 <button class="fuse-mat-button-large w-full mt-6" mat-flat-button  (click)="signIn()">
-                    <span *ngIf="!(signInForm?.disabled)">Sign in</span>
+                    <span *ngIf="!(signInForm?.disabled)">Ingresar</span>
                 </button>
             </form>
         </div>
