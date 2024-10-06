@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +24,7 @@ export class SignUpComponent {
    * Constructor
    */
   constructor(
-      private _formBuilder: FormBuilder,
+      private _formBuilder: FormBuilder,private authService: AuthService
   )
   {
   }
@@ -42,7 +43,6 @@ export class SignUpComponent {
               name      : ['', Validators.required],
               email     : ['', [Validators.required, Validators.email]],
               password  : ['', Validators.required],
-              company   : [''],
               agreements: ['', Validators.requiredTrue],
           },
       );
@@ -57,5 +57,11 @@ export class SignUpComponent {
    */
   signUp(): void
   {
+    const formValue = this.signUpForm.value;
+    if (this.authService.signUp(formValue)) {
+      console.log('Registro Exitioso')
+    } else {
+      console.log('El usuario ya existe.');
+    }
   }
 }

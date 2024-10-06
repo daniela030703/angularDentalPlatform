@@ -13,6 +13,7 @@ import { PacientesComponent } from './modules/admin/pacientes/pacientes.componen
 import { AdminComponent } from './modules/admin/admin.component';
 import { AddServiceComponent } from './modules/admin/services/add-service/add-service.component';
 import { AddMedicoComponent } from './modules/admin/medicos/add-medico/add-medico.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 export const routes: Routes = [
     { path: '', component: WebPageComponent,
@@ -31,7 +32,7 @@ export const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
 
     {
-        path: 'dashboard', component: AdminComponent,
+        path: 'dashboard', component: AdminComponent, canActivate: [AuthGuard],
         children: [
             { path: '', component: DashboardComponent },
             { path: 'services', component: ServicesComponent },
