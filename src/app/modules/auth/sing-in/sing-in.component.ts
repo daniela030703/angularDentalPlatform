@@ -7,11 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sing-in',
   standalone: true,
-  imports: [ NgIf, RouterLink, MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule,],
+  imports: [ NgIf, RouterLink, MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule],
   templateUrl: './sing-in.component.html',
   styleUrl: './sing-in.component.css'
 })
@@ -21,7 +22,7 @@ export class SingInComponent implements OnInit {
   /**
    * Constructor
    */
-  constructor(private _formBuilder: FormBuilder, private authService: AuthService, private _router: Router) {}
+  constructor(private _formBuilder: FormBuilder, private authService: AuthService, private _router: Router, private snackBar: MatSnackBar,) {}
 
   ngOnInit(): void {
     // Crear el formulario
@@ -34,14 +35,26 @@ export class SingInComponent implements OnInit {
     if (this.signInForm.valid) {
       const formValue = this.signInForm.value;
       if (this.authService.login(formValue)) {
-        this._router.navigate(['/dashboard']);
+        this.snackBar.open('Ingreso exitoso', 'Cerrar', {
+          duration: 3000, 
+        });
+  
+        setTimeout(() => {
+          this._router.navigate(['/dashboard']);
+        }, 3000); 
+  
+        
       } else {
-        console.log('fallo')
+        this.snackBar.open('Ingreso Fallido', 'Cerrar', {
+          duration: 3000, 
+        });
       }
  
 
     } else {
-      console.log('El formulario no es válido');
+      this.snackBar.open('El formulario no es válido', 'Cerrar', {
+        duration: 3000, 
+      });
     }
   }
 }

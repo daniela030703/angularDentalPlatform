@@ -5,14 +5,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthService } from '../../../services/auth.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [RouterLink, NgIf, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule ],
+  imports: [MatSnackBarModule, RouterLink, NgIf, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
@@ -24,7 +25,7 @@ export class SignUpComponent {
    * Constructor
    */
   constructor(
-      private _formBuilder: FormBuilder,private authService: AuthService
+      private _formBuilder: FormBuilder,private authService: AuthService, private snackBar: MatSnackBar, private router: Router
   )
   {
   }
@@ -42,8 +43,7 @@ export class SignUpComponent {
       this.signUpForm = this._formBuilder.group({
               name      : ['', Validators.required],
               email     : ['', [Validators.required, Validators.email]],
-              password  : ['', Validators.required],
-              agreements: ['', Validators.requiredTrue],
+              password  : ['', Validators.required]
           },
       );
   }
@@ -59,9 +59,18 @@ export class SignUpComponent {
   {
     const formValue = this.signUpForm.value;
     if (this.authService.signUp(formValue)) {
-      console.log('Registro Exitioso')
+      this.snackBar.open('Registro exitoso', 'Cerrar', {
+        duration: 3000, 
+      });
+
+      setTimeout(() => {
+        this.router.navigate(['/sign-in']); 
+      }, 3000); 
+
     } else {
-      console.log('El usuario ya existe.');
+      this.snackBar.open('El usuario ya existe.', 'Cerrar', {
+        duration: 3000,
+      });
     }
   }
 }

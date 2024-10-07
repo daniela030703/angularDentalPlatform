@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'" [disabled]="signUpForm.disabled" (click)="signUp()">
+                <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'" [disabled]="!signUpForm.valid" (click)="signUp()">
                     <span *ngIf="!signUpForm.disabled">Crear cuenta</span>
                 </button>
 
